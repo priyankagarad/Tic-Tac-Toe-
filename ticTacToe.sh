@@ -1,7 +1,10 @@
 #!/bin/bash -x 
 echo "Welcome on Tic Tac Toe Game"
-
 declare -a board
+
+#variable
+cell_count=0
+max_cell=9
 
 # display board
 function board() {
@@ -39,7 +42,14 @@ function switchPlayer(){
    fi
 }
 
+#to show Board Condition
+function checkCondition()
+{
+   board
+   (( cell_Count++ ))
+}
 
 board
 assignSymbol
 switchPlayer
+
