@@ -1,6 +1,5 @@
 #! /bin/bash -x
 echo " #### Welcome to Tic-Tac-Toe Game #### "
-
 declare -a board
 
 #variable
@@ -20,7 +19,6 @@ function displayBoard()
 	done
 }
 
-
 # To assign symbol for player
 function  assignSymbol()
 {
@@ -38,7 +36,6 @@ function  assignSymbol()
 			computer="X"
 	fi
 }
-
 
 # To know who play
 function switchPlayer()
@@ -74,7 +71,6 @@ function userPlay()
 		fi
 }
 
-
 #function to check winning condition for Row Column and Diagonal
 function rowColumnDiagonalWin()
 {
@@ -103,7 +99,6 @@ function checkConditions()
 }
 
 # For computer play
-
 function computerPlay()
 {
 	flag=0
@@ -132,8 +127,7 @@ function computerPlay()
 	fi
 }
 
-# To check Win condition for computer
-
+#To check Win condition for computer
 function winBlockCondition(){
    local symbol=$1
    if [ $flag -eq 0 ]
@@ -151,7 +145,6 @@ function winBlockCondition(){
 }
 
 # To check Computer Row win
-
 function computerRowWin()
 {
 	local symbol=$1
@@ -169,12 +162,11 @@ function computerRowWin()
 		then
 			board[$row]=$computer
 			checkConditions
-		fi
+	  	fi
 	done
 }
 
 # To check computer column Win
-
 function computerColumnWin()
 {
 	local symbol=$1
@@ -197,7 +189,6 @@ function computerColumnWin()
 }
 
 # To check computer Diagonal Win
-
 function computerDiagonalWin()
 {
 	local symbol=$1
@@ -220,16 +211,16 @@ function computerDiagonalWin()
 		 checkConditions
 	elif [[ ${board[$diagonal]} == $symbol && ${board[$diagonal+8]} == $symbol && ${board[$diagonal+4]} == $((diagonal+5)) ]]
 	then
-			board[$diagonal+4]=$computer
-			checkConditions
+		 board[$diagonal+4]=$computer
+		 checkConditions
 	 elif [[ ${board[$diagonal+4]} == $symbol && ${board[$diagonal+8]} == $symbol && ${board[$diagonal]} == $((diagonal+1)) ]]
 	then
-			board[$diagonal]=$computer
-			checkConditions
+		 board[$diagonal]=$computer
+		 checkConditions
 	fi
 }
 
-#  Main function call
+#Main function call
 displayBoard
 assignSymbol
 switchPlayer
