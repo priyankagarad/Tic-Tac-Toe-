@@ -219,7 +219,7 @@ function computerDiagonalWin()
 		 checkConditions
 	fi
 }
-
+#check condition for corner(computer)
 function checkCorner()
 {
 	for (( cell=0;cell<7;cell=$cell+6))
@@ -236,6 +236,19 @@ function checkCorner()
 			break
 		fi
 	done
+}
+
+#check condition for side(computer)
+function checkSides()
+{
+		for (( i=0;i<8;i=i+2 ))
+		do
+			if [[ ${board[$i]} -eq $((i+1)) ]]
+			then
+				board[$i]=$computer
+				checkCondition
+			fi
+		done
 }
 
 #Main function call
