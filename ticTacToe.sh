@@ -220,6 +220,24 @@ function computerDiagonalWin()
 	fi
 }
 
+function checkCorner()
+{
+	for (( cell=0;cell<7;cell=$cell+6))
+	do
+		if [[ $board[$cell]} == $((cell+1)) ]]
+		then
+			board[$cell] == $computer
+			checkCondition
+			break
+		elif [[ ${board[$cell+2]} == $((cell+3)) ]]
+		then
+			board[$cell+2]=$computer
+			checkCondition
+			break
+		fi
+	done
+}
+
 #Main function call
 displayBoard
 assignSymbol
