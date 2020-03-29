@@ -153,11 +153,11 @@ function computerRowWin()
 		if [[ ${board[$row]} == $symbol && ${board[$row+1]} == $symbol && ${board[$row+2]} == $((row+3)) ]]
 		then
 			board[$row+2]=$computer
-			checkCondition
+			checkConditions
 		elif [[ ${board[$row]} == $symbol && ${board[$row+2]} == $symbol && ${board[$row+1]} == $((row+2)) ]]
 		then
 			board[$row+1]=$computer
-			checkCondition
+			checkConditions
 		elif [[ ${board[$row+1]} == $symbol && ${board[$row+2]} == $symbol && ${board[$row]} == $((row+1)) ]]
 		then
 			board[$row]=$computer
@@ -227,12 +227,12 @@ function checkCorner()
 		if [[ $board[$cell]} == $((cell+1)) ]]
 		then
 			board[$cell] == $computer
-			checkCondition
+			checkConditions
 			break
 		elif [[ ${board[$cell+2]} == $((cell+3)) ]]
 		then
 			board[$cell+2]=$computer
-			checkCondition
+			checkConditions
 			break
 		fi
 	done
@@ -246,9 +246,20 @@ function checkSides()
 			if [[ ${board[$i]} -eq $((i+1)) ]]
 			then
 				board[$i]=$computer
-				checkCondition
+				checkConditions
 			fi
 		done
+}
+
+# To check Center for computer
+function checkCenter()
+{
+		cell=0
+		if [[ ${board[$cell+4]} -eq $((cell+5)) ]]
+		then
+				board[$cell+4]=$computer
+				checkConditions
+		fi
 }
 
 #Main function call
